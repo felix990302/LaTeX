@@ -7,3 +7,10 @@
 \contentsline {section}{\numberline {4}Matrices}{2}
 \contentsline {section}{\numberline {5}Footnotes}{2}
 \contentsline {section}{\numberline {6}Tables}{2}
+\contentsline {section}{\numberline {7}Drawing Pictures}{3}
+\contentsline {section}{\numberline {8}Source Code}{4}
+\contentsline {section}{\numberline {9}Lists}{4}
+\contentsline {subsection}{\numberline {9.1}Unordered List}{4}
+\contentsline {subsection}{\numberline {9.2}Ordered List}{4}
+\contentsline {subsection}{\numberline {9.3}Nested List with Numbering / Bullet Manipulation}{4}
+\contentsline {subsection}{\numberline {9.4}Package Enumitem}{5}

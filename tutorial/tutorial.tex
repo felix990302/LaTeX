@@ -2,13 +2,32 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{siunitx} % Required for alignment
-\usepackage{multirow}
-\usepackage{booktabs} % pretty tables
-
 \sisetup{
   round-mode = places, % Rounds numbers
   round-precision = 2, % up to two places
 }
+\usepackage{multirow}
+\usepackage{booktabs} % pretty tables
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color}
+\renewcommand\lstlistingname{Quelltext} % change language of section name
+\lstset{ % General setup for the package
+	language=Python,
+	basicstyle=\small\sffamily,
+	numbers=left,
+ 	numberstyle=\tiny,
+	frame=tb,
+	tabsize=4,
+	columns=fixed,
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces,
+	commentstyle=\color{gray},
+	keywordstyle=\color{blue}
+}
+\usepackage{enumitem}
+
 
 \title{The Everything Template}
 \date{2017-12-15}
@@ -98,7 +117,86 @@ This is some example text...\footnote{\label{myfootnote}...and its corresponding
  \end{center}
 \end{table}
 
+\newpage
+\section{Drawing Pictures}
+\begin{figure}[h!]
+ \begin{center}
+  \begin{tikzpicture}
+   \draw [red,dashed] (-2.5,2.5) rectangle (-1.5,1.5) node [black,below] {start}; % rectangle
+   \draw [thick] (-1,2) % line
+   to [out=10,in=190](2,2)
+   to [out=10,in=90] (6,0)
+   to [out=-90, in=30] (-2, -2);
+   \draw [fill] (5,0.1) rectangle (7, -0.1) node [black,right] {Obstacle}; % another rectangle
+   \draw [red,fill] (-2, -2) circle [radius=0.2] node [black, below=4] {Point}; % circle
+  \end{tikzpicture}
+  \caption{Example of tikzpicture}
+ \end{center}
+\end{figure}
 
+\newpage
+\section{Source Code}
+\begin{lstlisting}
+# Geru.Wrapper/quotes.py
+
+from Geru.Wrapper import session
+
+
+class Concordance(object):
+
+    @staticmethod
+    def get_quotes():
+        '''API call to RESTful API  for all quotes.'''
+        path = "path to API"
+        response = session.get(path)
+        return response.json()
+
+    @staticmethod
+    def get_quote(ind):
+        '''API call to RESTful specific quote'''
+        path = "path to API{}".format(ind)
+        response = session.get(path)
+        return response.json()
+\end{lstlisting}
+
+\section{Lists}
+
+\subsection{Unordered List}
+\begin{itemize}
+ \item One
+ \item Two
+ \item Three
+\end{itemize}
+
+\subsection{Ordered List}
+\begin{enumerate}
+ \item One
+ \item Two
+ \item Three
+\end{enumerate}
+
+\subsection{Nested List with Numbering / Bullet Manipulation}
+\begin{enumerate}[label=$\Gamma$]
+ \item One
+       \begin{enumerate}
+        \item[--] two
+        \item[$\ast$] Three
+        \item[$\Delta$] Four
+       \end{enumerate}
+ \item Five
+ \item Six
+\end{enumerate}
+
+\subsection{Package Enumitem}
+\begin{enumerate}[label=(\roman*)]
+  \item Roman
+  \begin{enumerate}[label=\arabic*]
+    \item Arabic
+    \begin{enumerate}[label=\alph*]
+      \item Alphabet
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
 
 \newpage
 \begin{appendix}
